@@ -28,6 +28,9 @@ class='{{ $attributes["class"] }}'
     function initMap{{$mapId}}() {
         map{{$mapId}} = new google.maps.Map(document.getElementById("{{$mapId}}"), {
             center: { lat: {{$centerPoint['lat'] ?? $centerPoint[0]}}, lng: {{$centerPoint['long'] ?? $centerPoint[1]}} },
+            @if ($maxZoomLevel)
+            maxZoom: {{$maxZoomLevel}},
+            @endif
             zoom: {{$zoomLevel}},
             mapTypeId: '{{$mapType}}'
         });
